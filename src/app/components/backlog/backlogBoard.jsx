@@ -1,6 +1,6 @@
 import TicketItem from "@/app/components/ticket/ticketItem";
 
-export default function BacklogBoard() {
+export default function BacklogBoard({ showfilter }) {
   return (
     <div className="w-full">
       {/* a menu bar includes Select all (text option, name of sprint with icon drop down, date, number of tickets with parentheness, the right side of menu bar includes three num represent number of 3 status of ticket, button that finishes sprint with label "complete sprint", and setting icon) */}
@@ -38,6 +38,7 @@ export default function BacklogBoard() {
         {Object.keys(Array.from({ length: 5 })).map((_, index) => (
           <TicketItem
             key={index}
+            showfilter={showfilter}
             ticket={{
               id: "PM-14059112024",
               name: "Ticket title",
