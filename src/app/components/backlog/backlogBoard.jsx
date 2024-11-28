@@ -34,9 +34,10 @@ export default function BacklogBoard() {
           />
         </div>
       </div>
-      <div className="mt-5 flex flex-col gap-1 max-h-[24vh] overflow-y-auto">
+      <div className="mt-5 flex flex-col gap-1">
         {Object.keys(Array.from({ length: 5 })).map((_, index) => (
           <TicketItem
+            key={index}
             ticket={{
               id: "PM-14059112024",
               name: "Ticket title",

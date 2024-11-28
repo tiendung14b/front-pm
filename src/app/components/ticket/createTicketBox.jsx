@@ -4,9 +4,20 @@ import { CreateButton } from "@components/ui/createButton";
 import { useState } from "react";
 import SelectWithImage from "../ui/selectWithImage";
 import Select from "@components/ui/select";
+import SelectWithoutImage from "@components/ui/selectWithoutImage";
+import CancelButton from "@components/ui/cancelButton";
 
 export default function CreateTicketBox() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useState(() => {
+    document.addEventListener("keydown", (e) => {
+      if (e.key.localeCompare("Escape") === 0) {
+        console.log(e.key);
+        setIsOpen(false);
+      }
+    });
+  }, []);
 
   return isOpen ? (
     <div className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-[#00000060] z-50 transition-all pb-4">
@@ -113,7 +124,28 @@ export default function CreateTicketBox() {
               </p>
             </div>
             {/* Select parent */}
+            <div>
+              <SelectWithoutImage
+                data={[
+                  { name: "Pham Minh a" },
+                  { name: "Nguyen Van Ab" },
+                  { name: "Tran Van Bc" },
+                ]}
+                label="Parent"
+                mark={true}
+              />
+            </div>
             {/* Sprint */}
+            <div>
+              <SelectWithoutImage
+                data={[
+                  { name: "Sprint 1" },
+                  { name: "Sprint 2" },
+                  { name: "Sprint 3" },
+                ]}
+                label="Sprint"
+              />
+            </div>
             {/* Reporter */}
             <div>
               <SelectWithImage
@@ -124,6 +156,39 @@ export default function CreateTicketBox() {
                 ]}
                 label="Reporter"
                 mark={false}
+              />
+            </div>
+            {/* linked tickets */}
+            <div>
+              <div>
+                <SelectWithoutImage
+                  data={[
+                    { name: "blocks" },
+                    { name: "is blocked by" },
+                    { name: "relates to" },
+                  ]}
+                  label="Linked tickets"
+                />
+              </div>
+              <div>
+                <SelectWithoutImage
+                  data={[
+                    { name: "PM-14059112024" },
+                    { name: "PM-14059112025" },
+                    { name: "PM-14059112026" },
+                  ]}
+                />
+              </div>
+            </div>
+            {/* restricted to (viewer, members, admin) */}
+            <div>
+              <SelectWithoutImage
+                data={[
+                  { name: "Viewer" },
+                  { name: "Members" },
+                  { name: "Admin" },
+                ]}
+                label="Restricted to"
               />
             </div>
             <div className="fixed -top-[1000px]">
@@ -138,12 +203,21 @@ export default function CreateTicketBox() {
               />
             </div>
             <hr className="bg-black mt-5" />
-            <CreateButton>Create ticket</CreateButton>
+            <div className="flex ml-auto gap-2">
+              <CancelButton
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+              >
+                Cancel
+              </CancelButton>
+              <CreateButton>Create ticket</CreateButton>
+            </div>
           </div>
         </div>
       </div>
     </div>
   ) : (
-    <CreateButton onClick={() => setIsOpen(true)}>Create ticket</CreateButton>
+    <CreateButton onClick={() => setIsOpen(true)}>Create</CreateButton>
   );
 }

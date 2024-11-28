@@ -1,8 +1,8 @@
 import Header from "@components/layouts/Header";
 import Sidebar from "@components/layouts/Sidebar";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Nunito } from "next/font/google";
 
-const pjs = Plus_Jakarta_Sans({ subsets: ["latin"] });
+const pjs = Nunito({ subsets: ["latin"] });
 
 import "../globals.css";
 

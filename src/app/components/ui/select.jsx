@@ -57,7 +57,7 @@ export default function Select({ publishingOptions }) {
 
         <ListboxOptions
           transition
-          className="absolute right-0 z-10 mt-2 w-72 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in"
+          className="absolute right-0 z-50 mt-2 w-72 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in"
         >
           {publishingOptions.map((option) => (
             <ListboxOption
@@ -67,14 +67,14 @@ export default function Select({ publishingOptions }) {
             >
               <div className="flex flex-col">
                 <div className="flex justify-between">
-                  <p className="font-normal group-data-[selected]:font-semibold">
+                  <p className="font-normal group-data-[selected]:font-semibold text-[12px]">
                     {option.title}
                   </p>
                   <span className="text-indigo-600 group-data-[focus]:text-white [.group:not([data-selected])_&]:hidden">
                     <CheckIcon aria-hidden="true" className="size-5" />
                   </span>
                 </div>
-                <p className="mt-2 text-gray-500 group-data-[focus]:text-indigo-200">
+                <p className=" text-gray-500 group-data-[focus]:text-indigo-200 text-[10px]">
                   {option.description}
                 </p>
               </div>

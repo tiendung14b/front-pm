@@ -3,7 +3,7 @@
 import TicketItem from "@/app/components/ticket/ticketItem";
 import { useState } from "react";
 
-export default function SprintBoard() {
+export default function SprintBoard({ showfilter }) {
   const [show, setShow] = useState(true);
 
   return (
@@ -48,8 +48,8 @@ export default function SprintBoard() {
         </div>
       </div>
       <div
-        className={`mt-5 flex flex-col gap-1 max-h-[24vh] overflow-y-auto ${
-          !show && "h-0"
+        className={`mt-5 flex flex-col gap-1 ${
+          !show && "h-0 overflow-hidden"
         } transition-all`}
       >
         {Object.keys(Array.from({ length: 5 })).map((_, index) => (
@@ -63,6 +63,7 @@ export default function SprintBoard() {
               assignee: "/images/avt.gif",
               status: index % 3 === 0 ? 1 : index % 3 === 1 ? 2 : 3,
             }}
+            showfilter={showfilter}
           />
         ))}
       </div>
