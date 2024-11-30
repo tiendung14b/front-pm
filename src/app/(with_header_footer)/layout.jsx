@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html>
       <body className={`${pjs.className}`}>
         <Header />
-        <main className="pl-7 flex overflow-y-hidden">
+        <main className="pl-7 flex overflow-y-hidden bg-white">
           <Sidebar />
           <div className="ml-8 mt-7 flex-grow">{children}</div>
         </main>
